@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover,interactive-widget=resizes-content">
+  <meta name="theme-color" content="#eef6f3">
+  <link rel="manifest" href="./manifest.webmanifest">
+  <link rel="icon" href="./icon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="./app.css">
+  <script src="./app.js" defer></script>
+  <title>个人智能体 · 小赫预览</title>
+</head>
+<body>
+  <div class="shell">
+    <header class="top">
+      <div class="avatar" aria-hidden="true">赫</div>
+      <div class="identity"><div class="brand">个人智能体</div><h1>小赫</h1></div>
+      <button type="button" class="settings" id="setup" aria-label="安装说明" aria-haspopup="dialog" title="安装说明"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3v12m-4-4 4 4 4-4M5 16v4h14v-4"/></svg></button>
+    </header>
+    <p class="status"><span class="dot" aria-hidden="true"></span><strong>界面预览</strong><span>未连接真实小赫</span></p>
+    <main class="timeline" id="timeline" tabindex="0" aria-label="对话">
+      <div class="intro" id="intro">
+        <span class="intro-sign" aria-hidden="true">✳</span>
+        <h2>小赫的手机入口</h2>
+        <p>试试发一段字，或从手机选个文件。这里只测试界面，不发送、不保存，也不会读取 QQ 里的记忆。</p>
+      </div>
+      <div class="messages" id="messages" role="log" aria-label="本页预览消息"></div>
+    </main>
+    <footer class="bottom">
+      <p class="file-error" id="file-error" role="status" hidden></p>
+      <div class="file" id="file-card" hidden>
+        <div class="file-detail"><strong id="file-name"></strong><small id="file-size"></small></div>
+        <button type="button" id="remove" aria-label="移除文件">×</button>
+      </div>
+      <form id="compose">
+        <input type="file" id="file" hidden>
+        <button type="button" id="attach" aria-label="选择文本文件" title="选择 .md 或 .txt"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M5 12h14"/></svg></button>
+        <textarea id="draft" rows="1" maxlength="4000" aria-label="消息" placeholder="输入消息…" enterkeyhint="enter"></textarea>
+        <button class="send" id="send" type="submit" disabled>发送</button>
+      </form>
+    </footer>
+  </div>
+  <dialog id="install" aria-labelledby="install-title">
+    <h2 id="install-title">添加到手机桌面</h2>
+    <p id="install-help">在 iQOO Neo9 上用 Chrome 打开正式 HTTPS 地址，点右上角菜单，选择「安装应用」或「添加到主屏幕」。菜单名称随浏览器版本而异。</p>
+    <p class="install-note">此页只演示界面。文件直接打开不会开启安装功能；若浏览器只创建了网页快捷方式，打开后可能仍会显示地址栏。</p>
+    <div class="dialog-actions"><button type="button" id="install-now" class="send" hidden>安装</button><form method="dialog"><button type="submit">知道了</button></form></div>
+  </dialog>
+  <noscript>需要启用 JavaScript 才能试用聊天和选文件。</noscript>
+</body>
+</html>

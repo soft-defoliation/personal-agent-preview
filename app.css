@@ -1,0 +1,33 @@
+*,*::before,*::after{box-sizing:border-box}
+:root{font:16px/1.55 system-ui,"Microsoft YaHei",sans-serif;color:#132820;background:#e9f2ee;--paper:#f8fbfa;--brand:#146649;--muted:#4d655c;--line:#dbe9e2}
+body{margin:0;overflow:hidden}
+[hidden]{display:none!important}
+button,textarea{font:inherit;color:inherit}
+button{display:inline-grid;place-items:center;min-width:48px;min-height:48px;border:1px solid transparent;border-radius:15px;background:#ebf3ef;cursor:pointer;touch-action:manipulation}
+button:focus-visible,textarea:focus-visible,.timeline:focus-visible{outline:2px solid #13785a;outline-offset:2px}
+button svg{width:22px;height:22px;stroke:currentColor;stroke-width:1.8;fill:none;stroke-linecap:round;stroke-linejoin:round}
+button:disabled{background:#e6ede9;color:#637a70;cursor:default}
+.shell{display:grid;grid-template-rows:auto auto minmax(0,1fr) auto;width:100%;max-width:720px;height:100vh;height:100dvh;margin:auto;background:var(--paper);overflow:hidden}
+@media(max-width:720px){.shell{height:var(--visual-height,100dvh)}}
+.top,.bottom{padding-inline:max(16px,env(safe-area-inset-left)) max(16px,env(safe-area-inset-right))}
+.top{display:flex;align-items:center;gap:12px;padding-top:max(12px,env(safe-area-inset-top));padding-bottom:10px;background:#eef6f3}
+.avatar{display:grid;place-items:center;width:46px;height:46px;flex:none;border-radius:17px;background:#104b37;color:#fff;font-weight:750;font-size:21px}
+.identity{flex:1;min-width:0}.brand{font-size:.72rem;font-weight:650;letter-spacing:.12em;color:var(--muted)}
+h1,h2,p{margin:0}h1{font-size:1.18rem;line-height:1.25}h2{line-height:1.35}
+.settings{background:transparent;color:var(--brand)}
+.status{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:32px;padding:4px max(16px,env(safe-area-inset-right)) 5px max(16px,env(safe-area-inset-left));font-size:.76rem;color:var(--muted);background:#eef6f3;border-bottom:1px solid var(--line)}
+.dot{width:7px;height:7px;border-radius:50%;background:#b36108;flex:none}
+.timeline{overflow:auto;overscroll-behavior-y:contain;padding:18px max(16px,env(safe-area-inset-right)) 20px max(16px,env(safe-area-inset-left));scrollbar-width:thin}
+.intro{max-width:440px;margin:clamp(4px,7vh,48px) auto 20px;padding:clamp(16px,5vw,28px);border:1px solid var(--line);border-radius:24px;background:#fff}
+.intro-sign{display:inline-grid;place-items:center;width:38px;height:38px;border-radius:13px;background:#e4f2ea;color:var(--brand);font-size:22px;margin-bottom:14px}
+.intro h2{font-size:1.25rem;margin-bottom:5px}.intro p{font-size:.92rem;color:var(--muted)}
+.messages{display:grid;gap:12px}.message{max-width:88%;justify-self:start;padding:10px 13px;border-radius:4px 16px 16px 16px;border:1px solid var(--line);background:#fff;white-space:pre-wrap;overflow-wrap:anywhere}.message.user{justify-self:end;border-radius:16px 4px 16px 16px;background:#d7f0e3;border-color:#d7f0e3}
+.bottom{border-top:1px solid var(--line);background:#fff;padding-top:10px;padding-bottom:max(12px,env(safe-area-inset-bottom))}
+#compose{display:grid;grid-template-columns:48px minmax(0,1fr) auto;gap:8px;align-items:end}
+#draft{width:100%;min-height:48px;max-height:min(118px,28vh);padding:11px 12px;resize:none;border:1px solid var(--line);border-radius:15px;background:#f4f8f6;font-size:1rem}
+.send{padding-inline:14px;background:var(--brand);color:#fff;font-size:.92rem;font-weight:700}
+.file{display:flex;align-items:center;gap:8px;background:#eff6f2;border-radius:14px;margin-bottom:8px;padding:4px 4px 4px 12px}.file-detail{flex:1;min-width:0}.file strong,.file small{display:block;overflow-wrap:anywhere}.file small{color:var(--muted)}.file button{font-size:1.4rem}
+.file-error{color:#8a320d;margin-bottom:8px;font-size:.85rem}
+#install{max-width:min(90vw,440px);max-height:min(80vh,90%);border:1px solid var(--line);border-radius:22px;padding:22px;color:inherit;background:#fff}#install::backdrop{background:#112c2466}
+#install h2{font-size:1.2rem}#install p{margin-top:10px}.install-note{color:var(--muted);font-size:.85rem}.dialog-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:16px}.dialog-actions button{padding-inline:14px}
+@media(min-width:721px){.shell{border-inline:1px solid var(--line)}}

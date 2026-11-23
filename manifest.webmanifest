@@ -1,0 +1,26 @@
+{
+  "id": "./",
+  "name": "个人智能体",
+  "short_name": "个人智能体",
+  "description": "你的个人智能体入口",
+  "lang": "zh-CN",
+  "start_url": "./",
+  "scope": "./",
+  "display": "standalone",
+  "theme_color": "#eef6f3",
+  "background_color": "#e9f2ee",
+  "icons": [
+    {
+      "src": "./icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "./icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any maskable"
+    }
+  ]
+}
