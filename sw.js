@@ -1,7 +1,7 @@
 /* Preview only. Production authentication, chats and uploads must never be cached here. */
 const scope = self.registration.scope;
 const prefix = 'personal-agent-preview:' + scope + ':';
-const cacheName = prefix + 'v3';
+const cacheName = prefix + 'v4';
 const assets = new Set(['./','./index.html','./app.css','./app.js','./manifest.webmanifest','./icon.svg','./icon-192.png','./icon-512.png'].map(path => new URL(path, scope).href));
 self.addEventListener('install', event => {
   event.waitUntil(caches.open(cacheName).then(cache => cache.addAll([...assets].map(url => new Request(url, {cache:'reload', credentials:'omit'})))));
