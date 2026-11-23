@@ -73,23 +73,62 @@ el('compose').addEventListener('submit', event => {
   revealLatest();
 });
 
-const standalone = () => matchMedia('(display-mode: standalone)').matches;
-el('setup').addEventListener('click', () => {
-  if (standalone()) el('install-help').textContent = '当前已从手机桌面以独立窗口打开。';
-  el('install').showModal();
-});
+const standalone = matchMedia('(display-mode: standalone)');
+const setup = el('setup');
+const installDialog = el('install');
+const installNow = el('install-now');
+let installed = false;
+let prompting = false;
+
+function renderInstall() {
+  const canInstall = Boolean(installPrompt);
+  setup.hidden = installed || standalone.matches;
+  setup.disabled = prompting;
+  setup.textContent = canInstall ? '安装' : '安装说明';
+  setup.classList.toggle('can-install', canInstall);
+  installNow.hidden = setup.hidden || prompting || !canInstall;
+  if (setup.hidden && installDialog.open) installDialog.close();
+}
+
+async function requestInstall() {
+  if (setup.hidden || prompting) return;
+  const prompt = installPrompt;
+  if (!prompt) {
+    if (!installDialog.open) installDialog.showModal();
+    return;
+  }
+  installPrompt = undefined; // Each browser prompt can be used only once.
+  prompting = true;
+  if (installDialog.open) installDialog.close();
+  renderInstall();
+  try {
+    // Invoke in this click, without awaiting any other work first.
+    await prompt.prompt();
+  } catch {
+    if (!setup.hidden && !installDialog.open) installDialog.showModal();
+  } finally {
+    prompting = false;
+    renderInstall();
+  }
+}
+
+setup.removeAttribute('aria-label');
+setup.removeAttribute('title');
+setup.addEventListener('click', requestInstall);
+installNow.addEventListener('click', requestInstall);
 window.addEventListener('beforeinstallprompt', event => {
+  if (setup.hidden || typeof event.prompt !== 'function') return;
   event.preventDefault();
   installPrompt = event;
-  el('install-now').hidden = false;
+  renderInstall();
 });
-el('install-now').addEventListener('click', async () => {
-  const prompt = installPrompt;
+window.addEventListener('appinstalled', () => {
+  installed = true;
   installPrompt = undefined;
-  el('install-now').hidden = true;
-  if (!prompt) return;
-  try { await prompt.prompt(); } catch { /* Leave the manual instructions visible. */ }
+  renderInstall();
 });
+standalone.addEventListener?.('change', renderInstall);
+renderInstall();
 if (window.isSecureContext && /^https?:$/.test(location.protocol) && 'serviceWorker' in navigator) {
   navigator.serviceWorker.register('./sw.js', {scope:'./'}).catch(() => {});
 }
