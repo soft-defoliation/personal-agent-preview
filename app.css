@@ -17,6 +17,10 @@ h1,h2,p{margin:0}h1{font-size:1.18rem;line-height:1.25}h2{line-height:1.35}
 .settings{padding-inline:12px;background:transparent;color:var(--brand);font-size:.86rem;font-weight:650;white-space:nowrap}
 .settings.can-install{background:var(--brand);color:#fff}
 .status{display:flex;align-items:center;gap:8px;flex-wrap:wrap;min-height:32px;padding:4px max(16px,env(safe-area-inset-right)) 5px max(16px,env(safe-area-inset-left));font-size:.76rem;color:var(--muted);background:#eef6f3;border-bottom:1px solid var(--line)}
+.shell.has-android-download{grid-template-rows:auto auto auto minmax(0,1fr) auto}
+.android-release{display:flex;align-items:center;gap:8px 12px;flex-wrap:wrap;padding:8px max(16px,env(safe-area-inset-right)) 8px max(16px,env(safe-area-inset-left));border-bottom:1px solid var(--line);color:var(--muted);font-size:.82rem}
+.android-download{display:inline-flex;align-items:center;min-height:44px;padding-inline:14px;border-radius:13px;background:var(--brand);color:#fff;font-weight:650;text-decoration:none}
+.android-download:focus-visible{outline:2px solid #13785a;outline-offset:2px}
 .dot{width:7px;height:7px;border-radius:50%;background:#b36108;flex:none}
 .timeline{overflow:auto;overscroll-behavior-y:contain;padding:18px max(16px,env(safe-area-inset-right)) 20px max(16px,env(safe-area-inset-left));scrollbar-width:thin}
 .intro{max-width:440px;margin:clamp(4px,7vh,48px) auto 20px;padding:clamp(16px,5vw,28px);border:1px solid var(--line);border-radius:24px;background:#fff}
