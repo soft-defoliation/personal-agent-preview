@@ -1,0 +1,15 @@
+{
+  "schema": 1,
+  "android": {
+    "version": "1.0.0",
+    "versionCode": 3,
+    "manifest": "https://soft-defoliation.github.io/personal-agent-preview/android-stable-update.json",
+    "download": "https://soft-defoliation.github.io/personal-agent-preview/personal-agent-android-1.0.0-preview.apk",
+    "sha256": "775633e5aa6c85a5e5386ea8c6f43b97164fc26352abb1de1fb5e9531a40a600"
+  },
+  "web": {
+    "version": "990ec37161704a1bf8f230e1",
+    "url": "https://agent.xingcage.xyz/",
+    "manifest": "https://agent.xingcage.xyz/app-version.json"
+  }
+}
